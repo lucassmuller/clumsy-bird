@@ -12,6 +12,8 @@ game.GameOverScreen = me.ScreenObject.extend({
         };
         me.save.add(this.savedData);
 
+        window.top.postMessage({ type: 'score', data: game.data.steps }, '*');
+
         if (!me.save.topSteps) me.save.add({topSteps: game.data.steps});
         if (game.data.steps > me.save.topSteps) {
             me.save.topSteps = game.data.steps;
